@@ -107,29 +107,52 @@ function init() {
     inquirer
         .prompt(mngrQuestions)
         .then((data) => {
-            // looping function that calls engineer and intern questions if applicable
-            function looper() {
+            // prompter function that calls engineer and intern questions if applicable
+            function prompter() {
             if (data.choiceEnder == 'Engineer'){
                 inquirer
                     .prompt(engineerQuestions)
-                console.log(data.choiceEnder)
+                console.log(`${data.choiceEnder} is choiceEnder`)
                 
             }
             else if (data.choiceEnder == 'Intern'){
                 inquirer
                     .prompt(internQuestions)
-                console.log(data.choiceEnder)
+                console.log(`${data.choiceEnder} is choiceEnder`)
                 
             }
+            else if (data.choiceEnder == "Finish building my team"){
+                inquirer
+                    
+                console.log(`Team has been built`)
+                
+            }
+            // loop prompter function if needed
+         
             
         }
-            // calling looping function 
+            // calling prompter function 
+            // prompter()
+            // WHY DOESNT THIS WORK?! Idealy after the prompter function was called the new choiceEnder should then be 
+            // evaluated in the if statement bellow and call prompter again if Engeineer or Intern was selected 
+            // but instead it is prompting at the same time as line 135 
             if (data.choiceEnder != "Finish building my team"){
+                prompter()
                 console.log("it loooooped")
-                looper()
-            }
             
-            console.log(data.choiceEnder)
+            }
+
+            // why does this continue to prompt without letting the questions get asked??? 
+            // while (data.choiceEnder != "Finish building my team"){
+            //     prompter()
+            //     console.log("it loooooped")
+            // }
+            
+           
+           
+           
+            
+            // console.log(data.choiceEnder)
             // this is taking the data we get and sending it into generateMarkdown.js
             var markdown = generateMarkdown(data)
             // this is getting the markdwon from generateMarkdwon and writting a staff.html file 
