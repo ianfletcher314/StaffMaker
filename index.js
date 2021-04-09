@@ -133,6 +133,7 @@ function init() {
         }
             // calling prompter function 
             // prompter()
+            
             // WHY DOESNT THIS WORK?! Idealy after the prompter function was called the new choiceEnder should then be 
             // evaluated in the if statement bellow and call prompter again if Engeineer or Intern was selected 
             // but instead it is prompting at the same time as line 135 
