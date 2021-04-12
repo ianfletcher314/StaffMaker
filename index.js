@@ -2,6 +2,11 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 const generateMarkdown = require('./utils/generateMarkdown');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+var employeeElements = []
+
 
 const mngrQuestions = [
     {
@@ -31,7 +36,7 @@ const mngrQuestions = [
         choices: [
             "Engineer",
             "Intern",
-            "Finish Building Team", 
+            "Finish building my team",
         ]
     },
 ];
@@ -64,7 +69,7 @@ const engineerQuestions = [
         choices: [
             "Engineer",
             "Intern",
-            "Finish Building Team",
+            "Finish building my team",
         ]
     },
 ];
@@ -101,69 +106,61 @@ const internQuestions = [
         ]
     },
 ];
+// prompter function that calls engineer and intern questions if applicable
+function prompter(choiceEnder) {
 
-// TODO: Create a function to initialize app 
+    if (choiceEnder == 'Engineer') {
+        inquirer
+            .prompt(engineerQuestions)
+            .then((data) => {
+                const engineer = new Engineer(data.engineerName, data.engineerID, data.engineerEmail, data.engineerGitHub)
+                employeeElements.push(engineer)
+                prompter(data.choiceEnder)
+            })
+       // console.log(`${data.choiceEnder} is choiceEnder`)
+
+    }
+     if (choiceEnder == 'Intern') {
+        inquirer
+            .prompt(internQuestions)
+            .then((data) => {
+                const intern = new Intern(data.internName, data.internID, data.internEmail, data.internGitHub)
+                employeeElements.push(intern)
+                prompter(data.choiceEnder)
+            })
+        // console.log(`${data.choiceEnder} is choiceEnder`)
+
+    }
+    else if (choiceEnder == "Finish building my team") {
+        // var cool = JSON.stringify(employeeElements)
+        // var htmlthing = JSON.stringify(generateMarkdown(employeeElements))
+        console.log(employeeElements)
+      
+       
+
+        fs.writeFile(`staff.html`, generateMarkdown(employeeElements), (err) =>
+        err ? console.log(err) : console.log('Success!')
+      );
+        
+
+    }
+
+    
+
+}
 function init() {
     inquirer
         .prompt(mngrQuestions)
         .then((data) => {
-            // prompter function that calls engineer and intern questions if applicable
-            function prompter() {
-            if (data.choiceEnder == 'Engineer'){
-                inquirer
-                    .prompt(engineerQuestions)
-                console.log(`${data.choiceEnder} is choiceEnder`)
-                
-            }
-            else if (data.choiceEnder == 'Intern'){
-                inquirer
-                    .prompt(internQuestions)
-                console.log(`${data.choiceEnder} is choiceEnder`)
-                
-            }
-            else if (data.choiceEnder == "Finish building my team"){
-                inquirer
-                    
-                console.log(`Team has been built`)
-                
-            }
-            // loop prompter function if needed
+            var choiceReader = data.choiceEnder
+            console.log(data.mngrOfficeNumber)
+            const manager = new Manager(data.mngrName, data.mngrID, data.mngrEmail, data.mngrOfficeNumber)
+            console.log(manager)
+            employeeElements.push(manager)
+            prompter(choiceReader)
          
-            
-        }
-            // calling prompter function 
-            // prompter()
-            
-            // WHY DOESNT THIS WORK?! Idealy after the prompter function was called the new choiceEnder should then be 
-            // evaluated in the if statement bellow and call prompter again if Engeineer or Intern was selected 
-            // but instead it is prompting at the same time as line 135 
-            if (data.choiceEnder != "Finish building my team"){
-                prompter()
-                console.log("it loooooped")
-            
-            }
 
-            // why does this continue to prompt without letting the questions get asked??? 
-            // while (data.choiceEnder != "Finish building my team"){
-            //     prompter()
-            //     console.log("it loooooped")
-            // }
-            
-           
-           
-           
-            
-            // console.log(data.choiceEnder)
-            // this is taking the data we get and sending it into generateMarkdown.js
-            var markdown = generateMarkdown(data)
-            // this is getting the markdwon from generateMarkdwon and writting a staff.html file 
-            fs.writeFile(`staff.html`, markdown, (err) =>
-              err ? console.log(err) : console.log('Success!')
-            );
-          });
-            
-    
-    }
-
+        })
+}
 // Function call to initialize app
 init();
