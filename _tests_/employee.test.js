@@ -22,121 +22,78 @@ describe("employee", () => {
     it("should return the id of the employee", () => {
       // Create new objects to test with
       const id = "id"
-      const employee = new Employee(id);
+      const name = "Ian"
+      const employee = new Employee(name,id);
   
 
       // Verify that the child was added to the children array
       expect(employee.id).toEqual("id");
     });
-
-  });
-
-  describe("getName()", () => {
-    
-
-    
-
-    it("should throw an error if not provided an Employee as an argument", () => {
-      // Define the error message that is expected to be thrown
-      const err = new Error(
-        "Expected parameter 'Employee' to have name, Id, Email, and role"
-      );
-
-      // Define the code that will throw an error inside a callback function
-      const callBack = () => {
-        const employee = new Employee();
-        employee.getName();
-      };
-
-      // Verify that the callback function captured the error
-      expect(callBack).toThrowError(err);
-    });
-  });
-  describe("getId()", () => {
-    it("should return the Id of the employee", () => {
+    it("should return the email of the employee", () => {
       // Create new objects to test with
-      const employee = new Employee("Ian", "Id", "email", "employee");
-  
-
-      // Verify that the child was added to the children array
-      expect(employee.Id).toEqual("Id");
-    });
-
-    
-
-    it("should throw an error if not provided an Employee as an argument", () => {
-      // Define the error message that is expected to be thrown
-      const err = new Error(
-        "Expected parameter 'Employee' to have name, Id, Email, and role"
-      );
-
-      // Define the code that will throw an error inside a callback function
-      const callBack = () => {
-        const employee = new Employee();
-        employee.getId();
-      };
-
-      // Verify that the callback function captured the error
-      expect(callBack).toThrowError(err);
-    });
-  });
-
-  describe("getEmail()", () => {
-    it("should return the Email address of the employee", () => {
-      // Create new objects to test with
-      const employee = new Employee("Ian", "Id", "email", "employee");
+      const id = "id"
+      const name = "Ian"
+      const email = "email"
+      const employee = new Employee(name,id,email);
   
 
       // Verify that the child was added to the children array
       expect(employee.email).toEqual("email");
     });
-
     
 
-    it("should throw an error if not provided an Employee as an argument", () => {
-      // Define the error message that is expected to be thrown
-      const err = new Error(
-        "Expected parameter 'Employee' to have name, Id, Email, and role"
-      );
+  });
 
-      // Define the code that will throw an error inside a callback function
-      const callBack = () => {
-        const employee = new Employee();
-        employee.getEmail();
-      };
+  describe("getName()", () => {
+    it("should be a method to get the name of an employee", () => {
+      // Create new objects to test with
+      const name = "Ian"
+      const employee = new Employee(name);
+  
 
-      // Verify that the callback function captured the error
-      expect(callBack).toThrowError(err);
+      // Verify that the child was added to the children array
+      expect(employee.getname()).toEqual("Ian");
+    });
+  });
+  describe("getId()", () => {
+    it("should be a method to get the ID of an employee", () => {
+      // Create new objects to test with
+      const name = "Ian"
+      const id = "id"
+      const employee = new Employee(name,id);
+  
+
+      // Verify that the child was added to the children array
+      expect(employee.getId()).toEqual("id");
+    });
+  });
+
+  describe("getEmail()", () => {
+    it("should be a method to get the ID of an employee", () => {
+      // Create new objects to test with
+      const name = "Ian"
+      const id = "id"
+      const email = "email"
+      const employee = new Employee(name,id,email);
+  
+
+      // Verify that the child was added to the children array
+      expect(employee.getEmail()).toEqual("email");
     });
   });
 
 
   describe("getRole()", () => {
-    it("should return the Email address of the employee", () => {
+    it("should be a method to get the Role of an employee", () => {
       // Create new objects to test with
-      const employee = new Employee("Ian", "Id", "email", "employee");
+      const name = "Ian"
+      const id = "id"
+      const email = "email"
+      const employee = new Employee(name,id,email);
   
 
       // Verify that the child was added to the children array
-      expect(employee.role).toEqual("employee");
-    });
-
-    
-
-    it("should throw an error if not provided an Employee as an argument", () => {
-      // Define the error message that is expected to be thrown
-      const err = new Error(
-        "Expected parameter 'Employee' to have name, Id, Email, and role"
-      );
-
-      // Define the code that will throw an error inside a callback function
-      const callBack = () => {
-        const employee = new Employee();
-        employee.getRole();
-      };
-
-      // Verify that the callback function captured the error
-      expect(callBack).toThrowError(err);
+      expect(employee.getRole()).toEqual("Employee");
     });
   });
 });

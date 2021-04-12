@@ -124,7 +124,7 @@ function prompter(choiceEnder) {
         inquirer
             .prompt(internQuestions)
             .then((data) => {
-                const intern = new Intern(data.internName, data.internID, data.internEmail, data.internGitHub)
+                const intern = new Intern(data.internName, data.internID, data.internEmail, data.internSchool)
                 employeeElements.push(intern)
                 prompter(data.choiceEnder)
             })

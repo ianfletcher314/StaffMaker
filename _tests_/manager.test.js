@@ -3,40 +3,36 @@ const Manager = require("../lib/manager");
 
 describe("manager", () => {
   describe("Initialization", () => {
-    it("should create an object with 'info' array, employee 'Name',  'Id' number,  'email' address , 'office' number",  () => {
+    it("should create a manager object",  () => {
       const manager = new Manager();
 
       // Verify that the new object has the correct properties
-      expect(manager).toEqual({ info: [], Name: "Name", Id: "Id", email: "email", role: "manager", office: "office"});
+      expect(typeof(manager)).toEqual("object");
     });
   });
 
 
   describe("getRole()", () => {
-    it("should return the Email address of the employee", () => {
+    it("should be a method to get the Role of an employee", () => {
       // Create new objects to test with
-      const manager = new Manager("Ian", "Id", "email", "manager","office");
+      const manager = new Manager();
   
 
       // Verify that the child was added to the children array
-      expect(manager.role).toEqual("manager");
+      expect(manager.getRole()).toEqual("Manager");
     });
 
-    
-    it("should throw an error if not provided an Employee as an argument", () => {
-      // Define the error message that is expected to be thrown
-      const err = new Error(
-        "Expected parameter 'Employee' to have name, Id, Email, role, and office number"
-      );
+  });
 
-      // Define the code that will throw an error inside a callback function
-      const callBack = () => {
-        const employee = new Manager();
-        employee.getRole();
-      };
+  describe("getOffice()", () => {
+    it("should be a method to get the Role of an employee", () => {
+      // Create new objects to test with
+      const manager = new Manager("a","b","c",45);
+  
 
-      // Verify that the callback function captured the error
-      expect(callBack).toThrowError(err);
+      // Verify that the child was added to the children array
+      expect(manager.getOffice()).toEqual(45);
     });
+
   });
 });
