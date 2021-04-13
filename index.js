@@ -134,7 +134,7 @@ function prompter(choiceEnder) {
     else if (choiceEnder == "Finish building my team") {
         // var cool = JSON.stringify(employeeElements)
         // var htmlthing = JSON.stringify(generateMarkdown(employeeElements))
-        console.log(employeeElements)
+        // console.log(employeeElements)
       
        
 
@@ -153,9 +153,9 @@ function init() {
         .prompt(mngrQuestions)
         .then((data) => {
             var choiceReader = data.choiceEnder
-            console.log(data.mngrOfficeNumber)
+            // console.log(data.mngrOfficeNumber)
             const manager = new Manager(data.mngrName, data.mngrID, data.mngrEmail, data.mngrOfficeNumber)
-            console.log(manager)
+            // console.log(manager)
             employeeElements.push(manager)
             prompter(choiceReader)
          

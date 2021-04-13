@@ -9,7 +9,7 @@
  6. [Questions](#Questions)
  7. [License](#License)
 ## Description
-This application was designed to create an Staff roster by prompting the user with simple questions. User should navigate to the directory that houses this application and enter "node ." in their ternimal. This will begin the series of questions and generate the Staff roster accrodingly.
+This application was designed to create an Staff roster by prompting the user with simple questions. User should navigate to the directory that houses this application and enter "npm i" and then "npm start" in their ternimal. This will begin the series of questions and generate the Staff roster accrodingly.
 
 ## Instalation
 In order to acess and refractor the code you must first go through the Installation Process.
@@ -33,7 +33,7 @@ This project uses Java Script and Node JS to create .HTLM files.
 Ian Fletcher developed this application 
 
 ## Tests
-to run tests enter "npm test" 
+to run tests enter "npm i" (if this has not been run before) then "npm test" 
 
 ## Questions 
 Please contact me at ianfletcher314@gmail.com or visit my GitHub github.com/ianfletcher314
