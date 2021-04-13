@@ -11,6 +11,8 @@
 ## Description
 This application was designed to create an Staff roster by prompting the user with simple questions. User should navigate to the directory that houses this application and enter "npm i" and then "npm start" in their ternimal. This will begin the series of questions and generate the Staff roster accrodingly.
 
+For more information on how to use the applciation please watch this video: (https://drive.google.com/file/d/1CvhmsuLKE9845i0IzBBuKu2fwktMtZov/view)
+
 ## Instalation
 In order to acess and refractor the code you must first go through the Installation Process.
 
